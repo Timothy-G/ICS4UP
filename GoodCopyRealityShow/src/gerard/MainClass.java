@@ -282,7 +282,7 @@ public class MainClass {
 	  * 
 	  * @param aL
 	  * 
-	  * allows the user to search for a contestant
+	  * allows the user to search for a contestant.
 	  */
 	 
 	 public static void search(ArrayList <ContestantInformation> aL){
