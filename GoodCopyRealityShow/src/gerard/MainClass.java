@@ -28,7 +28,7 @@ public class MainClass {
 	 * 
 	 * @param month
 	 * @param dob
-	 * method that calculates the date of birth 
+	 * method that calculates the date of birth.
 	 */
 	 public static void setMonth(int month, Calendar dob){
 		 	if(month == 1)
