@@ -225,7 +225,7 @@ public class ContestantInformation implements Comparable {
 	 * Province, city, postal code and phone number on one line.
 	 */
 	public String toString() {
-		return Fname + ", " + Lname + ", " + Bday.toString() + ", " + StNum + ", " + StName + ", " + province + ", " + City + ", " + PostalCode + ", " + PhoneNum;  
+		return Fname + ", " + Lname + ", " + Bday.get(Calendar.YEAR) + "/" + (Bday.get(Calendar.MONTH) + 1) + "/" + Bday.get(Calendar.DAY_OF_MONTH) + ", " + StNum + ", " + StName + ", " + province + ", " + City + ", " + PostalCode + ", " + PhoneNum;  
 	}
 	/**
 	 * 

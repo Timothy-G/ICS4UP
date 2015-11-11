@@ -96,8 +96,8 @@ public class MainClass {
 	public static Calendar stringToCalendar(String everything){
 		Calendar bday = new GregorianCalendar();	
 		bday.set(Calendar.YEAR, Integer.parseInt(everything.substring(0,4)));
-		setMonth(Integer.parseInt(everything.substring(5,7)),bday);
-		bday.set(Calendar.DAY_OF_MONTH, Integer.parseInt(everything.substring(8,10)));
+		setMonth(Integer.parseInt(everything.substring(5, everything.indexOf('/', 6))),bday);
+		bday.set(Calendar.DAY_OF_MONTH, Integer.parseInt(everything.substring(everything.indexOf('/', 6) + 1), everything.length() - 1));
 		return bday;
 	}
 	/**
@@ -346,9 +346,11 @@ public class MainClass {
 	 public static void load(ArrayList <ContestantInformation> aL) throws IOException, InvalidInputException{
 		 BufferedReader fbr = new BufferedReader(new FileReader("contestant.txt"));
 		 Calendar bday = new GregorianCalendar();
-		 for(int i = 0; i < aL.size();i++){
 			String ReadLines;
-			 ReadLines = fbr.readLine(); 
+			ReadLines = fbr.readLine();
+			while(ReadLines != null){
+				int i = aL.size();
+			 System.out.println(ReadLines);
 			 String[] array = ReadLines.split(", ");
 			 aL.add(new ContestantInformation());
 			 aL.get(i).setFname(array[0]);
@@ -359,8 +361,9 @@ public class MainClass {
 			 aL.get(i).setProvince(findProv(array[5]));
 			 aL.get(i).setCity(array[6]);
 			 aL.get(i).setPostalCode(array[7]);
-			 aL.get(i).setPhoneNum(array[8]);
-			 
+			 aL.get(i).setPhoneNum(array[8]); 
+			 i++;
+			 ReadLines = fbr.readLine();
 		 }
 	 }
 	 /**
