@@ -92,6 +92,12 @@ public class MainClass {
 		
 		return null;	
 	}
+	/**
+	 * 
+	 * @param everything
+	 * @return
+	 * this method gets the birthday of the person by (yyyy/mm/dd) by using the calendar method as well as it calculates (or finds) the 2 "/" in the date given
+	 */
 	
 	public static Calendar stringToCalendar(String everything){
 		Calendar bday = new GregorianCalendar();	
@@ -334,6 +340,7 @@ public class MainClass {
 		 PrintStream fps = new PrintStream("contestant.txt");
 		 for(int i = 0; i < aL.size();i++){
 			 fps.println(aL.get(i).toString());
+			 System.out.print("The contestants have been saved");
 		 }
 	 }
 	 /**
@@ -409,8 +416,10 @@ public class MainClass {
 			search(aL);
 		else if(input.equals("4"))
 			deleteContestant(aL);
-		else if (input.equals("5"))
+		else if (input.equals("5")){
 			aL.removeAll(aL);
+		System.out.print("All the contestants have succesfully been deleted");
+		}
 		else if (input.equals("6"))
 			save(aL);
 		else if (input.equals("7"))	
