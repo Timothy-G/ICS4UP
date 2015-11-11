@@ -404,7 +404,8 @@ public class MainClass {
 		System.out.println("5. Delete all the contestants");
 		System.out.println("6. Save a contestant to a text document");
 		System.out.println("7. Load a contestant to a text documanet");
-		System.out.println("8. Exit Program.");
+		System.out.println("8. Sort the contestants by first name");
+		System.out.println("9. Exit Program.");
 		
 		input = scan.nextLine();
 		
@@ -424,7 +425,11 @@ public class MainClass {
 			save(aL);
 		else if (input.equals("7"))	
 			load(aL);
-		else if(input.equals("8"))
+		else if (input.equals("8")){
+			sort(aL);
+			System.out.print("The contestants have been sorted");
+		}
+		else if(input.equals("9"))
 			System.exit(0);
 		 }done = true;
 	}
