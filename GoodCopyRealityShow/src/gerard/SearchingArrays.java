@@ -115,6 +115,14 @@ public class SearchingArrays {
 		return -1;
 	}
 */
+	/**
+	 * 
+	 * @param aL
+	 * @param firstname
+	 * @param lastname
+	 * @return
+	 * a linear search that searches for the contesants in the arry or txt file
+	 */
 	public static int linearSearch(ArrayList<ContestantInformation> aL, String firstname, String lastname){
 		 
 			for(int i = 0; i < aL.size(); i++){
