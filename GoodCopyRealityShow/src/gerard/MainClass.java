@@ -92,6 +92,14 @@ public class MainClass {
 		
 		return null;	
 	}
+	
+	public static Calendar stringToCalendar(String everything){
+		Calendar bday = new GregorianCalendar();	
+		bday.set(Calendar.YEAR, Integer.parseInt(everything.substring(0,4)));
+		setMonth(Integer.parseInt(everything.substring(5,7)),bday);
+		bday.set(Calendar.DAY_OF_MONTH, Integer.parseInt(everything.substring(8,10)));
+		return bday;
+	}
 	/**
 	 * 
 	 * @param aL
@@ -145,9 +153,7 @@ public class MainClass {
 				try{
 					System.out.print("What is your date of birth? (yyyy/mm/dd)");
 					String everything = scan.nextLine();
-					bday.set(Calendar.YEAR, Integer.parseInt(everything.substring(0,4)));
-					setMonth(Integer.parseInt(everything.substring(5,7)),bday);
-					bday.set(Calendar.DAY_OF_MONTH, Integer.parseInt(everything.substring(8,10)));
+					 bday = stringToCalendar(everything);
 					contestant.setBday(bday);
 				}catch(InvalidInputException e)
 				{
@@ -253,7 +259,7 @@ public class MainClass {
 			 System.out.println(Label.toString());
 		 }
 		 else
-			 System.out.println("You're Stupid");
+			 System.out.println("Please enter a persons name that has already been entered.");
 	 }
 	 
 	 /**
@@ -281,9 +287,7 @@ public class MainClass {
 			System.out.println("Enter First Name: ");
 			String firstname = scan.nextLine();
 			System.out.println("Choose one of the following options.");
-			System.out.println("1. Linear Search.");
-			System.out.println("2. Binary Search.");
-			
+			System.out.println("1. Linear Search.");		
 			String input = scan.nextLine();
 			if (input.equals("1"))
 				printLabel(aL, Search.linearSearch(aL, firstname, lastname));
@@ -291,29 +295,34 @@ public class MainClass {
 				Search.binarySearch(aL, lastname, firstname);
 		 
 		 
-	 }
-	 
+	 } 
 	 /**
 	  * @param aL
 	  * 
 	  * method that delete the contestant information
 	  */
-	 
 	 public static void deleteContestant(ArrayList <ContestantInformation> aL){
-		 ContestantInformation contestant = new ContestantInformation();
-		 String input = scan.nextLine();
-		//String lastname = scan.nextLine();
-		// String firstname = scan.nextLine();
-		 
 		 	System.out.println("Choose one of the following options.");
 			System.out.println("1. Delete by name  (last name).");
-		
-			for(int i = 0; i < aL.size();i++){
-			if(input.equals(aL.get(i).getLname())){
-				System.out.println(aL.get(i).getFname() + aL.get(i).getLname());
+			String input = scan.nextLine();
+			System.out.println("Enter Last Name: ");
+		 	String lastname = scan.nextLine();
+			
+			for(int i = 0; i < aL.size(); i++){
+			if(lastname.equals(aL.get(i).getLname())){
+				System.out.println(aL.get(i).getFname() + " " +  aL.get(i).getLname()); 
+				System.out.print("are you sure you want to delete this person? (y = yes, n = no)");
+				String input1 = scan.nextLine();
+				if(input1.equals("y")){
+					aL.remove(i);
+					System.out.print("The contestant has succesfully been deleted");
+				}
+				else if (input1.equals("n"))
+					return;
 			}
 		}
 	 }
+	 
 	 /**
 	  * @param aL
 	 * @throws FileNotFoundException
@@ -323,7 +332,6 @@ public class MainClass {
 	 public static void save(ArrayList <ContestantInformation> aL) throws FileNotFoundException{
 		
 		 PrintStream fps = new PrintStream("contestant.txt");
-		 ContestantInformation contestant;
 		 for(int i = 0; i < aL.size();i++){
 			 fps.println(aL.get(i).toString());
 		 }
@@ -337,7 +345,7 @@ public class MainClass {
 	  */
 	 public static void load(ArrayList <ContestantInformation> aL) throws IOException, InvalidInputException{
 		 BufferedReader fbr = new BufferedReader(new FileReader("contestant.txt"));
-		 
+		 Calendar bday = new GregorianCalendar();
 		 for(int i = 0; i < aL.size();i++){
 			String ReadLines;
 			 ReadLines = fbr.readLine(); 
@@ -345,7 +353,7 @@ public class MainClass {
 			 aL.add(new ContestantInformation());
 			 aL.get(i).setFname(array[0]);
 			 aL.get(i).setLname(array[1]);
-			 //aL.get(i).setBday(array[2]);
+			 aL.get(i).setBday(stringToCalendar(array[2]));
 			 aL.get(i).setStNum(array[3]);
 			 aL.get(i).setStName(array[4]);
 			 aL.get(i).setProvince(findProv(array[5]));
@@ -361,21 +369,19 @@ public class MainClass {
 	  * sorts the contestants in the array list 
 	  */
 	 public static void sort(ArrayList <ContestantInformation> aL){
-		 ContestantInformation contestants;
-		 Collections.sort(contestants);
+		 Collections.sort(aL);
 	 }
 	/**
 	 * @param args
 	 * @throws InvalidInputException 
 	 * @throws IOException 
 	 * 
-	 * This is the main method where the program is exicuted.
+	 * This is the main method where the program is executed.
 	 */
 	public static void main(String[] args) throws IOException, InvalidInputException {
 		// TODO Auto-generated method stub
 		
 		ArrayList<ContestantInformation> aL = new ArrayList<ContestantInformation>();
-		ContestantInformation contestant;
 		String input;
 		boolean done = false;
 		

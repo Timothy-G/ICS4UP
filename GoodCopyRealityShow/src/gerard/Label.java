@@ -31,8 +31,8 @@ public class Label {
 	 * formats all of the uses adress info
 	 */
 	public void formatAdress(){
-		this.output = output + ", " +  ci.getStNum() + ", " + ci.getStName();
-		this.output = output + ", " + ci.getCity() + ", " + ci.getProvince();
+		this.output = output + ", " +  ci.getStNum() + " " + ci.getStName();
+		this.output = output + ", " + ci.getCity() + " " + ci.getProvince();
 		this.output = output + ", " + ci.getPostalCode();
 		//return formatAdress();
 	}
