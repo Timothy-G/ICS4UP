@@ -390,7 +390,7 @@ public class MainClass {
 	 /**
 	  * 
 	  * @param aL
-	  * sorts the contestants in the array list 
+	  * sorts the contestants in the array list by last name
 	  */
 	 public static void sort(ArrayList <ContestantInformation> aL){
 		 Collections.sort(aL);

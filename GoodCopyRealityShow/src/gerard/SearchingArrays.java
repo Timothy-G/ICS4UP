@@ -89,6 +89,13 @@ public class SearchingArrays {
 		return -1;
 	}
 */
+	/**
+	 * 
+	 * @param aL
+	 * @param ci
+	 * @return 
+	 * searches for contestants in a linear fashion
+	 */
 	public static int linearSearch(ArrayList<ContestantInformation> aL, ContestantInformation ci){
 		
 		for(int i = 0; i < aL.size(); i++){
@@ -121,7 +128,7 @@ public class SearchingArrays {
 	 * @param firstname
 	 * @param lastname
 	 * @return
-	 * a linear search that searches for the contesants in the arry or txt file
+	 * a linear search that searches for the contesants in the arry or txt file by first name and last name
 	 */
 	public static int linearSearch(ArrayList<ContestantInformation> aL, String firstname, String lastname){
 		 
@@ -132,7 +139,13 @@ public class SearchingArrays {
 			}
 			return -1;
 	 }
-	
+	/**
+	 * @param aL
+	 * @param lastName
+	 * @param firstName
+	 * @return 
+	 * searches for contestants in a binary fashion by using first name and last name
+	 */
 	public static int binarySearch(ArrayList<ContestantInformation> aL, String lastname, String firstname){
 		int begIndex = 0;
 		int endIndex = aL.size()- 1;
@@ -155,7 +168,13 @@ public class SearchingArrays {
 		
 		return -1;
 	}
-	
+	/**
+	 * 
+	 * @param aL
+	 * @param target
+	 * @return
+	 * recursive binary search that searches for conestants
+	 */
 	public static int binarySearch(ArrayList<ContestantInformation>aL, String target ){
 
 		return binarySearch(aL, target, 0, aL.size()-1);
