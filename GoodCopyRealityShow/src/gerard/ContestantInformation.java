@@ -276,14 +276,14 @@ public class ContestantInformation implements Comparable {
 	public int compareTo(Object agrs){
 		ContestantInformation ci = (ContestantInformation)agrs;
 		if(ci.getLname().compareTo(this.Lname) < 0)
-			return -1;
-		else if(ci.getLname().compareTo(this.Lname) > 0)
 			return 1;
+		else if(ci.getLname().compareTo(this.Lname) > 0)
+			return -1;
 		else
 			if(ci.getFname().compareTo(this.Fname) < 0)
-				return -1;
+				return 1;
 		if(ci.getFname().compareTo(this.Fname) > 0)
-			return 1 ;
+			return -1 ;
 		else
 			return 0;			
 	}
