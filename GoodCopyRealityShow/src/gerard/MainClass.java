@@ -102,9 +102,15 @@ public class MainClass {
 	public static Calendar stringToCalendar(String everything){
 		Calendar bday = new GregorianCalendar();	
 		bday.set(Calendar.YEAR, Integer.parseInt(everything.substring(0,4)));
-		setMonth(Integer.parseInt(everything.substring(5, everything.indexOf('/', 6))),bday);
+		if(Integer.parseInt(everything.substring(5, everything.indexOf('/', 6))) <= 12 && Integer.parseInt(everything.substring(5, everything.indexOf('/', 6))) >= 1){
+		setMonth(Integer.parseInt(everything.substring(5, everything.indexOf('/', 6))), bday);
 		bday.set(Calendar.DAY_OF_MONTH, Integer.parseInt(everything.substring(everything.indexOf('/', 6) + 1), everything.length() - 1));
 		return bday;
+		}
+		else
+			System.out.println("Sorry but that is  not a month.");
+			bday.clear();
+			return bday;
 	}
 	/**
 	 * 
@@ -161,6 +167,14 @@ public class MainClass {
 					String everything = scan.nextLine();
 					 bday = stringToCalendar(everything);
 					contestant.setBday(bday);
+					if(!contestant.getBday().isSet(Calendar.MONTH)){
+						return;
+					}
+					if(contestant.getAge() < 18){
+						System.out.println("sorry but, you're to young");
+						return;
+					}
+						
 				}catch(InvalidInputException e)
 				{
 					System.out.print(e.getMessage());
