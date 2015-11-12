@@ -1,5 +1,6 @@
 package gerard;
 import java.util.Scanner;
+import java.util.TimeZone;
 import java.util.Calendar;
 
 /**
@@ -213,6 +214,10 @@ public class ContestantInformation implements Comparable {
 	 */
 	public String getPostalCode() {
 		return this.PostalCode;
+	}
+	
+	public int getAge(){
+		return Calendar.getInstance(TimeZone.getTimeZone("Canada/Eastern")).get(Calendar.YEAR) -  Bday.get(Calendar.YEAR);
 	}
 	/**
 	 * 
