@@ -5,8 +5,8 @@ import java.util.Calendar;
 
 /**
  * 
- * This class will get the fist name, last name age, birthday, street number, 
- * street name, Province, city, postal code and phone number of a person for a 
+ * This class will get the fist name, last name, age, birthday, street number, 
+ * street name, Province, city, postal code, and phone number of a person for a 
  * Reality show..
  * 
  * @author Timothy Gerard 
@@ -23,7 +23,8 @@ public class ContestantInformation implements Comparable {
 	
 	/**   
 	 * 
-	 * @param firstName to set the first name
+	 * @param firstName 
+	 * to set the first name
 	 */
 	public void setFname(String firstName) throws InvalidInputException{
 		for(int a = 0; a < firstName.length(); a++ ){
@@ -35,7 +36,8 @@ public class ContestantInformation implements Comparable {
 	}
 	/**
 	 * 
-	 * @param lastName to set the last name
+	 * @param lastName 
+	 * to set the last name
 	 */
 	public void setLname(String lastName )throws InvalidInputException {
 		for(int i = 0; i <lastName.length(); i++ ){
@@ -47,7 +49,8 @@ public class ContestantInformation implements Comparable {
 	}
 	/**
 	 * 
-	 * @param stName to set the street name
+	 * @param stName 
+	 * to set the street name
 	 */
 	public void setStName(String stName)throws InvalidInputException {
 		for(int e = 0; e < stName.length(); e++ ){
@@ -59,7 +62,8 @@ public class ContestantInformation implements Comparable {
 	}
 	/**
 	 * 
-	 * @param provance to set the Province
+	 * @param provance 
+	 * to set the Province
 	 */
 	public void setProvince(Province province) throws  InvalidInputException{
 //		for(int c = 0; c <= province.length(); c++ ){
@@ -71,7 +75,8 @@ public class ContestantInformation implements Comparable {
 	}
 	/**
 	 * 
-	 * @param city to set the city
+	 * @param city 
+	 * to set the city
 	 */
 	public void setCity(String city) throws  InvalidInputException{
 		for(int d = 0; d < city.length(); d++ ){
@@ -83,7 +88,8 @@ public class ContestantInformation implements Comparable {
 	}
 	/**
 	 * 
-	 * @param stNum to set the street number
+	 * @param stNum 
+	 * to set the street number
 	 */
 	public void setStNum(String stNum)throws  InvalidInputException {
 		for(int f = 0; f < stNum.length(); f++ ){
@@ -94,7 +100,8 @@ public class ContestantInformation implements Comparable {
 	}
 	/**
 	 * 
-	 * @param phoneNum to set the phone number
+	 * @param phoneNum
+	 * to set the phone number
 	 */
 	public void setPhoneNum(String phoneNum) throws InvalidInputException {
 		if(phoneNum.length() > 10)
@@ -109,7 +116,8 @@ public class ContestantInformation implements Comparable {
 	}
 	/**
 	 * 
-	 * @param bDay to set the birth day of the person as a calendar object
+	 * @param bDay 
+	 * to set the birth day of the person as a calendar object
 	 */
 	public void setBday(Calendar bDay) throws InvalidInputException{
 		
@@ -117,7 +125,8 @@ public class ContestantInformation implements Comparable {
 	}
 	/**
 	 * 
-	 * @param postalCode set the persons postal code
+	 * @param postalCode 
+	 * set the persons postal code
 	 */
 	public void setPostalCode(String postalCode) throws InvalidInputException{
 	 
@@ -215,7 +224,11 @@ public class ContestantInformation implements Comparable {
 	public String getPostalCode() {
 		return this.PostalCode;
 	}
-	
+	/**
+	 * 
+	 * @return age
+	 * gets age of contestant, compares to current year
+	 */
 	public int getAge(){
 		return Calendar.getInstance(TimeZone.getTimeZone("Canada/Eastern")).get(Calendar.YEAR) -  Bday.get(Calendar.YEAR);
 	}
@@ -226,7 +239,7 @@ public class ContestantInformation implements Comparable {
 
 	}
 	/**
-	 * print the persons fist name, last name age, birthday, street number, street name, 
+	 * @return print the persons fist name, last name age, birthday, street number, street name, 
 	 * Province, city, postal code and phone number on one line.
 	 */
 	public String toString() {
@@ -238,6 +251,7 @@ public class ContestantInformation implements Comparable {
 	 * @param lastN
 	 * @param age
 	 * @param bDay
+	 * 
 	 */
 	public ContestantInformation(String firstN, String lastN, int age, Calendar bDay)throws InvalidInputException{
 		setFname(firstN);
@@ -248,6 +262,7 @@ public class ContestantInformation implements Comparable {
 	 * 
 	 * @param SNum
 	 * @param SName
+	 * 
 	 */
 	public ContestantInformation(int stNum, String stNa)throws InvalidInputException {
 		setStNum(Integer.toString(stNum));
@@ -276,14 +291,14 @@ public class ContestantInformation implements Comparable {
 	public int compareTo(Object agrs){
 		ContestantInformation ci = (ContestantInformation)agrs;
 		if(ci.getLname().compareTo(this.Lname) < 0)
-			return -1;
-		else if(ci.getLname().compareTo(this.Lname) > 0)
 			return 1;
+		else if(ci.getLname().compareTo(this.Lname) > 0)
+			return -1;
 		else
 			if(ci.getFname().compareTo(this.Fname) < 0)
-				return -1;
+				return 1;
 		if(ci.getFname().compareTo(this.Fname) > 0)
-			return 1 ;
+			return -1 ;
 		else
 			return 0;			
 	}

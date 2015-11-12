@@ -12,6 +12,7 @@ public class Label {
 /**
  * 
  * @param ci
+ * formats the name, address, and phone number
  */
 	public Label(ContestantInformation ci){
 		this.ci = ci;
@@ -44,7 +45,7 @@ public class Label {
 		//return formatPhoneNum();
 }
 	/**
-	 * 
+	 * @return the format
 	 */
 	public String toString(){
 		return output;

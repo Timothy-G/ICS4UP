@@ -104,7 +104,7 @@ public class MainClass {
 		bday.set(Calendar.YEAR, Integer.parseInt(everything.substring(0,4)));
 		if(Integer.parseInt(everything.substring(5, everything.indexOf('/', 6))) <= 12 && Integer.parseInt(everything.substring(5, everything.indexOf('/', 6))) >= 1){
 		setMonth(Integer.parseInt(everything.substring(5, everything.indexOf('/', 6))), bday);
-		bday.set(Calendar.DAY_OF_MONTH, Integer.parseInt(everything.substring(everything.indexOf('/', 6) + 1), everything.length() - 1));
+		bday.set(Calendar.DAY_OF_MONTH, Integer.parseInt(everything.substring(everything.indexOf('/', 6) + 1, everything.length())));
 		return bday;
 		}
 		else
@@ -390,7 +390,7 @@ public class MainClass {
 	 /**
 	  * 
 	  * @param aL
-	  * sorts the contestants in the array list 
+	  * sorts the contestants in the array list by last name
 	  */
 	 public static void sort(ArrayList <ContestantInformation> aL){
 		 Collections.sort(aL);
