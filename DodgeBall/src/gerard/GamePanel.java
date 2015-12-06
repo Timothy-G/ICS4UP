@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable {
 	 */
 	final int numBalls = 1;
 	/**
-	 * The number of paddles on the screen.
+	 * Paddle number 1
 	 */
 	final int numPaddles = 2;
 	/**
@@ -71,7 +71,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public GamePanel(){
 		// Start the ball bouncing (in its own thread)
 		this.setPreferredSize(new Dimension(width, height));
-		this.setBackground(Color.WHITE);
+		this.setBackground(Color.BLACK);
 		
 		for (int i = 0; i < numBalls; i++) {
 			ball[i] = new FlashingBall(50, 50, 0, width, 0, height);
@@ -80,15 +80,13 @@ public class GamePanel extends JPanel implements Runnable {
 			ball[i].setColor(new Color((int) (Math.random() * 256), (int) (Math
 					.random() * 256), (int) (Math.random() * 256)));
 		}
-		
-		for (int i = 0; i < numPaddles; i++) {
-			paddel[i] = new SquarePanel(50, 50, 0, width, 0, height);
-			
-			paddel[i].setYSpeed(Math.random() * 16-4);
-			
-			paddel[i].setColor(new Color((int) (Math.random() * 256), (int) (Math
-					.random() * 256), (int) (Math.random() * 256)));
-		}
+
+			//places 1 of the paddles on the screen
+			paddel[0] = new SquarePanel(20, 20, 0, width, 0, height);	
+			paddel[0].setYSpeed(Math.random() * 16-4);	
+			//places 1 of the paddles on the screen
+			paddel[1] = new SquarePanel(960, 20, 0, width, 0, height);
+			paddel[1].setYSpeed(Math.random() * 16-4);	
 		
 		Thread gameThread = new Thread(this);
 		gameThread.start();
@@ -116,7 +114,20 @@ public class GamePanel extends JPanel implements Runnable {
 		for (int i = 0; i < numBalls; i++) {
 			ball[i].draw(g);
 		}
-
+		/**
+		 * Clears the screen and paints the paddles.
+		 */
+		for (int i = 0; i < numPaddles; i++) {
+			paddel[i].draw(g);
+			g.setColor(Color.ORANGE);
+		}
+		/**
+		 * Clears the screen and paints the paddles.
+		 */
+		for (int i = 0; i < numPaddles; i++) {
+			paddel[i].draw(g);
+			g.setColor(Color.RED);
+		}
 	}
 
 }

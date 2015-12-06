@@ -4,8 +4,8 @@ import java.awt.Graphics;
 
 public class SquarePanel extends MovingObject implements Runnable {
 	
-	private int length = 5;
-	private int width = 2;
+	private int width = 150;
+	private int length = 20;
 
 	
 	public SquarePanel(double x, double y, int left, int right, int top, int bottom){
