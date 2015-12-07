@@ -92,7 +92,10 @@ public class FlashingBall extends MovingObject {
 		}
 
 	}
-	
+	/**
+	 *  getting the radius of the ball
+	 * @return
+	 */
 	public int getRadius(){
 		return radius;
 	}

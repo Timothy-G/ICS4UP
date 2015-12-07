@@ -190,11 +190,17 @@ public abstract class MovingObject implements Runnable {
 	public double getY() {
 		return y;
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public double getXspeed(){
 		return xSpeed;
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public double getYspeed(){
 		return ySpeed;
 	}

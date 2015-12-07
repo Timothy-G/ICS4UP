@@ -21,14 +21,14 @@ public class SquarePanel extends MovingObject implements Runnable {
 	}
 	/**
 	 * Makes the paddles grow and shrink
+	 * @throws InterruptedException 
 	 */
 	public void animateOneStep(){
-		for(int i = 0; i <= 10; i++){
-			length++;
-			if (length > 15){
-				length--;
-				
-			}
+		
+		for(int i = 0; i <= 50; i++){
+			width ++;
+			if (width > 200)
+				width--;
 		}
 	}
 	

@@ -52,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	/**
 	 * An array of paddles.
 	 */
-	SquarePanel[] paddel = new SquarePanel[numPaddles];
+	SquarePanel[] paddle = new SquarePanel[numPaddles];
 
 	/** main program (entry point) */
 	public static void main(String[] args) {
@@ -67,6 +67,50 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		c.add(new GamePanel());
 		frame.pack();
 
+		KeyListener key = new KeyListener(){
+			
+			@Override
+			/**
+			 * 
+			 */
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println(e.getKeyCode());
+				if (e.getKeyChar() == 'A'){
+					//paddle[0];
+				}
+				else if (e.getKeyChar() == 'S'){
+					//paddle[0];
+				}
+				else if (e.getKeyCode() == 38){
+					//paddle[0];
+				}
+				else if (e.getKeyCode() == 40){
+					//paddle[0];
+				}
+			}
+
+			@Override
+			 /**
+			    * 
+			    * @param e Thekeyboard event
+			    **/
+			    public void keyReleased (KeyEvent e)
+			    {
+
+			    }
+
+
+			@Override
+			/**
+			 * 
+			 */
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+				}
+			};
+			frame.addKeyListener(key);
 
 	}
 
@@ -84,11 +128,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		}
 
 			//places 1 of the paddles on the screen
-			paddel[0] = new SquarePanel(20, 20, 0, width, 0, height);	
-			paddel[0].setYSpeed(Math.random() * 16-4);	
+			paddle[0] = new SquarePanel(20, 20, 0, width, 0, height);	
 			//places 1 of the paddles on the screen
-			paddel[1] = new SquarePanel(960, 20, 0, width, 0, height);
-			paddel[1].setYSpeed(Math.random() * 16-4);	
+			paddle[1] = new SquarePanel(960, 20, 0, width, 0, height);	
 		
 		Thread gameThread = new Thread(this);
 		gameThread.start();
@@ -125,50 +167,45 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		 * Clears the screen and paints the paddles.
 		 */
 		for (int i = 0; i < numPaddles; i++) {
-			paddel[i].draw(g);
+			paddle[i].draw(g);
 			g.setColor(Color.ORANGE);
 		}
 		/**
 		 * Clears the screen and paints the paddles.
 		 */
 		for (int i = 0; i < numPaddles; i++) {
-			paddel[i].draw(g);
+			paddle[i].draw(g);
 			g.setColor(Color.RED);
 		}
 	}
 	
-	
+	/**
+	 * this is the collision method to check if the ball has come in contact with a paddle
+	 * @return
+	 */
 	public boolean cheeckCollision(){
-		if(ball[0].getX() <= 40 && ball[0].getY() >= paddel[0].getY() && ball[0].getY() <= paddel[0].getY() + paddel[0].getwidth())
+		if(ball[0].getX() <= 40 && ball[0].getY() >= paddle[0].getY() && ball[0].getY() <= paddle[0].getY() + paddle[0].getwidth())
 			return true;
-		else if(ball[0].getX() + 2*ball[0].getRadius() >= 960 && ball[0].getY() >= paddel[1].getY() && ball[0].getY() <= paddel[1].getY() + paddel[1].getwidth())
+		else if(ball[0].getX() + 2*ball[0].getRadius() >= 960 && ball[0].getY() >= paddle[1].getY() && ball[0].getY() <= paddle[1].getY() + paddle[1].getwidth())
 			return true;
 		else 
 			return false;
 	}
-	
-	
-char key = ' ';
+
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	 /**
-	    * 
-	    * @param e Thekeyboard event
-	    **/
-	    public void keyReleased (KeyEvent e)
-	    {
-		key = ' ';
-		repaint ();
-	    }
-
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
+	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
