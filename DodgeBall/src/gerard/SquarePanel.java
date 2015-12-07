@@ -7,11 +7,21 @@ public class SquarePanel extends MovingObject implements Runnable {
 	private int width = 150;
 	private int length = 20;
 
-	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param left
+	 * @param right
+	 * @param top
+	 * @param bottom
+	 */
 	public SquarePanel(double x, double y, int left, int right, int top, int bottom){
 		super(x, y, left + 10, right - 10, top + 10, bottom - 10);
 	}
-	
+	/**
+	 * Makes the paddles grow and shrink
+	 */
 	public void animateOneStep(){
 		for(int i = 0; i <= 10; i++){
 			length++;

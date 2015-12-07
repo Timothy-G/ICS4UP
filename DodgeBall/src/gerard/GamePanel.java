@@ -6,6 +6,8 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,7 +26,7 @@ import javax.swing.JPanel;
  * @author Christina Kemp adapted from Sam Scott
  */
 @SuppressWarnings("serial")
-public class GamePanel extends JPanel implements Runnable {
+public class GamePanel extends JPanel implements Runnable, KeyListener {
 
 
 	int width = 1000;
@@ -74,8 +76,8 @@ public class GamePanel extends JPanel implements Runnable {
 		this.setBackground(Color.BLACK);
 		
 		for (int i = 0; i < numBalls; i++) {
-			ball[i] = new FlashingBall(50, 50, 0, width, 0, height);
-			ball[i].setXSpeed(Math.random() * 16-4);
+			ball[i] = new FlashingBall(500, 300, 0, width, 0, height);
+			ball[i].setXSpeed(16-4);
 			ball[i].setYSpeed(Math.random() * 16-4);
 			ball[i].setColor(new Color((int) (Math.random() * 256), (int) (Math
 					.random() * 256), (int) (Math.random() * 256)));
@@ -129,5 +131,29 @@ public class GamePanel extends JPanel implements Runnable {
 			g.setColor(Color.RED);
 		}
 	}
+	
+char key = ' ';
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	 /**
+	    * 
+	    * @param e Thekeyboard event
+	    **/
+	    public void keyReleased (KeyEvent e)
+	    {
+		key = ' ';
+		repaint ();
+	    }
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
