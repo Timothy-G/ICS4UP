@@ -66,52 +66,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		Container c = frame.getContentPane();
 		c.add(new GamePanel());
 		frame.pack();
-
-		KeyListener key = new KeyListener(){
-			
-			@Override
-			/**
-			 * 
-			 */
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println(e.getKeyCode());
-				if (e.getKeyChar() == 'A'){
-					//paddle[0];
-				}
-				else if (e.getKeyChar() == 'S'){
-					//paddle[0];
-				}
-				else if (e.getKeyCode() == 38){
-					//paddle[0];
-				}
-				else if (e.getKeyCode() == 40){
-					//paddle[0];
-				}
-			}
-
-			@Override
-			 /**
-			    * 
-			    * @param e Thekeyboard event
-			    **/
-			    public void keyReleased (KeyEvent e)
-			    {
-
-			    }
-
-
-			@Override
-			/**
-			 * 
-			 */
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-				}
-			};
-			frame.addKeyListener(key);
-
 	}
 
 	public GamePanel(){
@@ -128,12 +82,16 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		}
 
 			//places 1 of the paddles on the screen
-			paddle[0] = new SquarePanel(20, 20, 0, width, 0, height);	
+			paddle[0] = new SquarePanel(20, 200, 0, width, 0, height);
 			//places 1 of the paddles on the screen
-			paddle[1] = new SquarePanel(960, 20, 0, width, 0, height);	
+			paddle[1] = new SquarePanel(960, 200, 0, width, 0, height);
+			
 		
 		Thread gameThread = new Thread(this);
 		gameThread.start();
+		
+		setFocusable(true);
+		addKeyListener(this);
 
 	}
 
@@ -184,29 +142,53 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	 * @return
 	 */
 	public boolean cheeckCollision(){
-		if(ball[0].getX() <= 40 && ball[0].getY() >= paddle[0].getY() && ball[0].getY() <= paddle[0].getY() + paddle[0].getwidth())
+		if(ball[0].getX() < 40 && ball[0].getY() > paddle[0].getY() && ball[0].getY() < paddle[0].getY() + paddle[0].getwidth())
 			return true;
-		else if(ball[0].getX() + 2*ball[0].getRadius() >= 960 && ball[0].getY() >= paddle[1].getY() && ball[0].getY() <= paddle[1].getY() + paddle[1].getwidth())
+		else if(ball[0].getX() + 2*ball[0].getRadius() > 960 && ball[0].getY() > paddle[1].getY() && ball[0].getY() < paddle[1].getY() + paddle[1].getwidth())
 			return true;
 		else 
 			return false;
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getKeyChar() == 'w' || e.getKeyChar() == 'W'){
+			paddle[0].setY((int) (paddle[0].getY()-20));
+		}
+		else if(e.getKeyChar() == 's' || e.getKeyChar() == 'S'){
+			paddle[0].setY((int) (paddle[0].getY()+20));
+		}
+		else if(e.getKeyCode() == 38){
+			paddle[1].setY((int) (paddle[1].getY()-20));
+		}
+		else if(e.getKeyCode() == 40){
+			paddle[1].setY((int) (paddle[1].getY()+20));
+		}	
+		
+		if(paddle[0].getY() < 0){
+			paddle[0].setY(0);
+		}
+			else if(paddle[0].getY() > 400){
+				paddle[0].setY(400);
+			}
+		
+		if(paddle[1].getY() < 0){
+			paddle[1].setY(0);
+		}
+		else if (paddle[1].getY() > 400)
+			paddle[1].setY(400);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
+	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 }
