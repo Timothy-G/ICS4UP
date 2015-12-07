@@ -6,6 +6,8 @@ public class SquarePanel extends MovingObject implements Runnable {
 	
 	private int width = 150;
 	private int length = 20;
+	private boolean grow = false;
+	private int delay = 0;
 
 	/**
 	 * 
@@ -24,12 +26,17 @@ public class SquarePanel extends MovingObject implements Runnable {
 	 * @throws InterruptedException 
 	 */
 	public void animateOneStep(){
-		
-		for(int i = 0; i <= 50; i++){
-			width ++;
-			if (width > 200)
-				width--;
+	
+		if(delay % 1000 == 0){
+			grow = !grow;
+		for(int i = 0; i <= 10; i++){
+			if(grow)
+			width += 10;
+			if(!grow) 
+				width -= 10;
+			}
 		}
+		delay++;
 	}
 	
 	/**
@@ -46,4 +53,5 @@ public class SquarePanel extends MovingObject implements Runnable {
 	public int getwidth(){
 		return width;
 	}
+	
 }

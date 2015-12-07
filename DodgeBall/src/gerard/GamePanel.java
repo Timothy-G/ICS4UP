@@ -101,11 +101,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	public void run() {
 		while (true) {
 			repaint();
-			if(cheeckCollision()){
-				ball[0].setXSpeed(ball[0].getXspeed() * -1);
-				ball[0].setYSpeed(ball[0].getYspeed() * -1);
-			}
-			
+			cheeckCollision();
 			try {
 				Thread.sleep(pauseDuration);
 			} catch (InterruptedException e) {
@@ -142,10 +138,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	 * @return
 	 */
 	public boolean cheeckCollision(){
-		if(ball[0].getX() < 40 && ball[0].getY() > paddle[0].getY() && ball[0].getY() < paddle[0].getY() + paddle[0].getwidth())
+		if(ball[0].getX() < 40 && ball[0].getY() > paddle[0].getY() && ball[0].getY() < paddle[0].getY() + paddle[0].getwidth()){
+			ball[0].setXSpeed(ball[0].getXspeed() * -1);
 			return true;
-		else if(ball[0].getX() + 2*ball[0].getRadius() > 960 && ball[0].getY() > paddle[1].getY() && ball[0].getY() < paddle[1].getY() + paddle[1].getwidth())
+		}
+		else if(ball[0].getX() + 2*ball[0].getRadius() > 960 && ball[0].getY() > paddle[1].getY() && ball[0].getY() < paddle[1].getY() + paddle[1].getwidth()){
+			ball[0].setXSpeed(ball[0].getXspeed() * -1);
 			return true;
+		}
 		else 
 			return false;
 	}
