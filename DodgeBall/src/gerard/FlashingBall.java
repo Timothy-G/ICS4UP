@@ -68,6 +68,10 @@ public class FlashingBall extends MovingObject {
 			else
 				filledIn = true;
 		}
+		if (getX() >= getRight() | getX() <= getLeft()){
+			setX(500);
+			setY(300);
+		}
 	}
 
 	/**
@@ -87,6 +91,10 @@ public class FlashingBall extends MovingObject {
 			g.fillOval(drawX + radius / 2, drawY + radius / 2, radius, radius);
 		}
 
+	}
+	
+	public int getRadius(){
+		return radius;
 	}
 	
 	/**

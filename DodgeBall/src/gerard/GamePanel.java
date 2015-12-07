@@ -101,6 +101,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	public void run() {
 		while (true) {
 			repaint();
+			if(cheeckCollision()){
+				ball[0].setXSpeed(ball[0].getXspeed() * -1);
+				ball[0].setYSpeed(ball[0].getYspeed() * -1);
+			}
+			
 			try {
 				Thread.sleep(pauseDuration);
 			} catch (InterruptedException e) {
@@ -132,11 +137,22 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		}
 	}
 	
+	
+	public boolean cheeckCollision(){
+		if(ball[0].getX() <= 40 && ball[0].getY() >= paddel[0].getY() && ball[0].getY() <= paddel[0].getY() + paddel[0].getwidth())
+			return true;
+		else if(ball[0].getX() + 2*ball[0].getRadius() >= 960 && ball[0].getY() >= paddel[1].getY() && ball[0].getY() <= paddel[1].getY() + paddel[1].getwidth())
+			return true;
+		else 
+			return false;
+	}
+	
+	
 char key = ' ';
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override

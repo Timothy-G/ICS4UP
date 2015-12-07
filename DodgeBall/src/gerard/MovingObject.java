@@ -134,8 +134,6 @@ public abstract class MovingObject implements Runnable {
 			animateOneStep();
 			x += xSpeed;
 			y += ySpeed;
-			if (x >= right | x <= left)
-				xSpeed *= -1;
 			if (y >= bottom | y <= top)
 				ySpeed *= -1;
 			try {
@@ -167,6 +165,21 @@ public abstract class MovingObject implements Runnable {
 	public double getX() {
 		return x;
 	}
+	/**
+	 *  getting the current position of the ball on right side of screen 
+	 * @return
+	 */
+	
+	public int getRight(){
+		return right;
+	}
+	/**
+	 *  getting the current position of the ball on left side of screen 
+	 * @return
+	 */
+	public int getLeft(){
+		return left;
+	}
 
 	/**
 	 * Returns the y location.
@@ -178,6 +191,13 @@ public abstract class MovingObject implements Runnable {
 		return y;
 	}
 	
+	public double getXspeed(){
+		return xSpeed;
+	}
+	
+	public double getYspeed(){
+		return ySpeed;
+	}
 	
 	/**
 	 * Sets the x speed.

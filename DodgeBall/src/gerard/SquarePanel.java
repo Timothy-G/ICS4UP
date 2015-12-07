@@ -42,4 +42,8 @@ public class SquarePanel extends MovingObject implements Runnable {
 		int drawY = (int) getY();
 		g.fillRect(drawX, drawY, length, width);
 	}
+
+	public int getwidth(){
+		return width;
+	}
 }
