@@ -139,11 +139,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	 */
 	public boolean cheeckCollision(){
 		if(ball[0].getX() < 40 && ball[0].getY() > paddle[0].getY() && ball[0].getY() < paddle[0].getY() + paddle[0].getwidth()){
-			ball[0].setXSpeed(ball[0].getXspeed() * -1);
+			ball[0].setXSpeed(Math.abs(ball[0].getXspeed()));
 			return true;
 		}
 		else if(ball[0].getX() + 2*ball[0].getRadius() > 960 && ball[0].getY() > paddle[1].getY() && ball[0].getY() < paddle[1].getY() + paddle[1].getwidth()){
-			ball[0].setXSpeed(ball[0].getXspeed() * -1);
+			ball[0].setXSpeed(Math.abs(ball[0].getXspeed()) * -1);
 			return true;
 		}
 		else 

@@ -27,7 +27,7 @@ public class SquarePanel extends MovingObject implements Runnable {
 	 */
 	public void animateOneStep(){
 	
-		if(delay % 1000 == 0){
+		if(delay % 100 == 0){
 			grow = !grow;
 		for(int i = 0; i <= 10; i++){
 			if(grow)
