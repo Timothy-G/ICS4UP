@@ -129,7 +129,7 @@ public class Sort {
 		 	public static void main(String[] args) {
 		 		// TODO Auto-generated method stub
 		 		
-		 		int unsort[] = {3, 99, 62, 1, 2, 8, 20, 66, 82, 42, 56};
+		 		int unsort[] = {4, 65, 76, 72, 2, 2, 53, 26, 74, 54, 56};
 		 		
 		 		System.out.println(Arrays.toString(Sort.selectionSort(unsort)) + "\n");
 		 		System.out.println(Arrays.toString(Sort.insertionSort(unsort)) + "\n");
